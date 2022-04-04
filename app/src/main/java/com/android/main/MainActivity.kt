@@ -86,7 +86,6 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
     }
 
     override fun realData(data: Any?) {
-        ToastUtils.toastShort("data:${(data as MainDataBean).toString()}")
 //        buildNotification("密码多次输入失败 自动禁用")
 //        buildNotification("门口有可疑人员")
     }
