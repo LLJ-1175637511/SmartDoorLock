@@ -6,13 +6,13 @@ import com.llj.baselib.IOTViewModel
 class MainVM:IOTViewModel() {
 
     fun openDoor(){
-        sendOrderToDevice("")
+        sendOrderToDevice("C")
     }
     fun setPwd(num:String){
-        sendOrderToDevice(num)
+        sendOrderToDevice("B:${num}")
     }
     fun openKeyBoard(){
-        sendOrderToDevice("")
+        sendOrderToDevice("A")
     }
 
     val devState = MutableLiveData<WebSocketType>()

@@ -24,6 +24,10 @@ class RevisePwdFragment:BaseDialog<FragmentRevisePwdBinding>(){
                 ToastUtils.toastShort("两次密码不一致")
                 return@setOnClickListener
             }
+            if (pwd1.length != 3){
+                ToastUtils.toastShort("新密码长度不为3")
+                return@setOnClickListener
+            }
             if (vm.devState.value != IOTViewModel.WebSocketType.DEVICE_ONLINE){
                 ToastUtils.toastShort("密码修改失败 设备已离线")
                 return@setOnClickListener

@@ -35,7 +35,7 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
 
     override fun init() {
         super.init()
-//        vm.connect(this, MainDataBean::class.java)
+        vm.connect(this, MainDataBean::class.java)
         initMainView()
     }
 
@@ -86,8 +86,22 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
     }
 
     override fun realData(data: Any?) {
-//        buildNotification("密码多次输入失败 自动禁用")
-//        buildNotification("门口有可疑人员")
+        if (data == null) return
+        val mainBean = data as MainDataBean
+        runOnUiThread {
+            if (mainBean.isHavePeople == 1){
+                mDataBinding.tvIsHavePeople.text = "请注意！ 门口有人"
+            }else{
+                mDataBinding.tvIsHavePeople.text = "正常"
+            }
+        }
+        if (mainBean.isHavePeopleAlert == 1){
+            buildNotification("门口有可疑人员")
+        }
+        if (mainBean.isPwdErrorAlert == 1){
+            buildNotification("密码多次输入失败 自动禁用")
+        }
+
     }
 
     private fun createNotificationChannel() {
@@ -115,7 +129,9 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
             .setSmallIcon(R.drawable.app_logo)
             .setContentTitle("门锁管家")
             .setContentText(t)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setShowWhen(true)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
+            .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
         NotificationManagerCompat.from(this).notify(100, builder.build())
