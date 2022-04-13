@@ -4,7 +4,7 @@ import com.llj.baselib.IOTInterfaceId;
 
 public class MainDataBean {
 
-    @IOTInterfaceId("23004")
+    @IOTInterfaceId("22693")
     private int isHavePeople;
 
     @IOTInterfaceId("23023")
@@ -37,4 +37,12 @@ public class MainDataBean {
         this.isHavePeopleAlert = isHavePeopleAlert;
     }
 
+    @Override
+    public String toString() {
+        return "MainDataBean{" +
+                "isHavePeople=" + isHavePeople +
+                ", isPwdErrorAlert=" + isPwdErrorAlert +
+                ", isHavePeopleAlert=" + isHavePeopleAlert +
+                '}';
+    }
 }

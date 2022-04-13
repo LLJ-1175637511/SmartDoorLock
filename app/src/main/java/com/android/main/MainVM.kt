@@ -5,6 +5,8 @@ import com.llj.baselib.IOTViewModel
 
 class MainVM:IOTViewModel() {
 
+    val isNormal = MutableLiveData<Boolean>(false)
+
     fun openDoor(){
         sendOrderToDevice("C")
     }

@@ -35,8 +35,8 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
 
     override fun init() {
         super.init()
-        vm.connect(this, MainDataBean::class.java)
         initMainView()
+        vm.connect(this, MainDataBean::class.java)
     }
 
     override fun onResume() {
@@ -55,6 +55,13 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
         }
         mDataBinding.btRevise.setOnClickListener {
             showDialog(RevisePwdFragment(), "revise")
+        }
+        vm.isNormal.observe(this){
+            if (it){
+                mDataBinding.tvIsHavePeople.text = "请注意！ 门口有人"
+            }else{
+                mDataBinding.tvIsHavePeople.text = "正常"
+            }
         }
     }
 
@@ -88,13 +95,7 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
     override fun realData(data: Any?) {
         if (data == null) return
         val mainBean = data as MainDataBean
-        runOnUiThread {
-            if (mainBean.isHavePeople == 1){
-                mDataBinding.tvIsHavePeople.text = "请注意！ 门口有人"
-            }else{
-                mDataBinding.tvIsHavePeople.text = "正常"
-            }
-        }
+        vm.isNormal.postValue(mainBean.isHavePeople == 1)
         if (mainBean.isHavePeopleAlert == 1){
             buildNotification("门口有可疑人员")
         }
