@@ -11,10 +11,10 @@
             android:id="@+id/tv1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/purple_200"
             android:gravity="center"
             android:text="@string/app_name"
-            android:textColor="#ffffff"
+            android:textColor="#FFFFFF"
             android:textSize="20sp"
             tools:ignore="MissingConstraints" />
 
@@ -59,7 +59,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_user_pwd_login" />
 
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -74,13 +73,13 @@
             android:id="@+id/btLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:background="@color/colorPrimary"
+            android:layout_marginTop="50dp"
             android:text="点击登录"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textColor="#ffffff"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            android:background="@drawable/button_frame_shape"
             app:layout_constraintTop_toBottomOf="@+id/cb_remem_pwd_login"
             tools:layout_editor_absoluteX="40dp" />
 

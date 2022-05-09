@@ -88,7 +88,7 @@ class MainActivity : IOTMainActivity<ActivityMainBinding>() {
 
     @SuppressLint("ResourceAsColor")
     override fun onDevLine() {
-        mDataBinding.tvDevState.setTextColor(R.color.greenDark)
+        mDataBinding.tvDevState.setTextColor(R.color.purple_200)
         mDataBinding.tvDevState.text = "设备在线"
     }
 
